@@ -1,13 +1,17 @@
 import React from 'react';
 
 var MovieListEntry = ({updateWatch, movieEntry}) => (
-  <div className="movie-list-entry">
-  {movieEntry.title}
-  <button onClick={() => updateWatch(movieEntry.title)}>{ movieEntry.watched ? 'Watched': "Not Watched"}</button>
+  <div>
+      <div className="movie-list-entry">
+      {movieEntry.title}
+      <button onClick={() => updateWatch(movieEntry.title)}>{
+      movieEntry.watched ? 'Watched': "Not Watched"}</button>
+      </div>
+
+    </div>
+
   </div>
+    );
 
 
-  );
-
-
-  export default MovieListEntry;
+    export default MovieListEntry;

@@ -47,7 +47,7 @@ class App extends React.Component {
     e.preventDefault();
     let allTitles = this.state.titleList;
     let foundTitles = [];
-    let searchedWord = this.state.textValue;
+    let searchedWord = this.state.textValue.toLowerCase();
 
     if(searchedWord.length === 0) {
       return;
@@ -59,27 +59,30 @@ class App extends React.Component {
         }
       }
       if(foundTitles.length === 0) {
-        foundTitles.push({title: 'no movie by that name found', key: 0})
+        foundTitles.push({title: 'no movie by that name found',watched: false, key: 'false'});
+
       }
       this.setState({foundTitles: foundTitles});
     }
   }
 
   updateWatch (movie) {
+
     let allTitles = this.state.titleList;
     let index = allTitles.findIndex(object => {
       return object.title.toLowerCase() === movie.toLowerCase();
     });
-
-    this.setState(prevState => {
-      if (prevState.titleList[index].watched) {
-        prevState.titleList[index].watched = false
-      } else {
-        prevState.titleList[index].watched = true;
-      }
-      return {titleList: prevState.titleList}
-    })
-
+    if(index >= 0) {
+      this.setState(prevState => {
+        if (prevState.titleList[index].watched) {
+          prevState.titleList[index].watched = false
+        } else {
+          prevState.titleList[index].watched = true;
+        }
+        return {titleList: prevState.titleList}
+      })
+    }
+    return;
   }
 
   toggleWatchedMovies (watchButton){
