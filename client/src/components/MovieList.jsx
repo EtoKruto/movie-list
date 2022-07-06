@@ -6,13 +6,12 @@ var MovieList = ({updateWatch,foundTitles}) => (
   <div className="movie-list">
   {foundTitles.map(movieEntry => (
     <MovieListEntry
-    key={movieEntry.key}
+    // key={movieEntry.key}
     movieEntry={movieEntry}
     updateWatch={updateWatch}
     />
     ))}
-    </div>
-    <div>
+
 
 
     </div>

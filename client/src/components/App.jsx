@@ -12,8 +12,8 @@ class App extends React.Component {
       titleList: titleList,
       foundTitles: titleList,
       textValue: ''
-
     };
+
     this.addMovieToList = this.addMovieToList.bind(this);
     this.handleChangeToSearch = this.handleChangeToSearch.bind(this);
     this.searchForMovie = this.searchForMovie.bind(this);
@@ -34,7 +34,6 @@ class App extends React.Component {
 
       document.getElementById('addMovieTextBox').value = '';
     }
-
   }
 
   handleChangeToSearch (searchText) {
@@ -45,7 +44,7 @@ class App extends React.Component {
 
   searchForMovie (e) {
     e.preventDefault();
-    let allTitles = this.state.titleList;
+    let allTitles = this.state.titleList.splice();
     let foundTitles = [];
     let searchedWord = this.state.textValue.toLowerCase();
 
@@ -59,7 +58,7 @@ class App extends React.Component {
         }
       }
       if(foundTitles.length === 0) {
-        foundTitles.push({title: 'no movie by that name found',watched: false, key: 'false'});
+        foundTitles.push({title: 'no movie by that name found', watched: false, key: 'false'});
 
       }
       this.setState({foundTitles: foundTitles});
